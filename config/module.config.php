@@ -4,6 +4,12 @@ namespace Stagem\ZfcLang;
 
 return [
 
+    'view_helpers' => [
+        'aliases' => [
+            'lang' => View\Helper\LangHelper::class,
+        ],
+    ],
+
     'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [

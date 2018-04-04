@@ -15,4 +15,22 @@ class LangRepository extends \Doctrine\ORM\EntityRepository
         return $qb;
     }
 
+    /**
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function getActiveLangs()
+    {
+        $qb = $this->getLangs();
+
+        $qb->where(
+            $qb->expr()->andX(
+                $qb->expr()->eq($this->_alias . '.isActive', '?1')
+            )
+        );
+
+        $qb->setParameters([1 => 1]);
+        return $qb;
+
+    }
+
 }
