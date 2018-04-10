@@ -20,6 +20,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Stagem\ZfcLang\Model\Lang;
 use Stagem\ZfcLang\Service\LangService;
 use Stagem\ZfcTranslator\Http\LocaleDetector;
 use Zend\I18n\Translator\TranslatorInterface;
@@ -37,6 +38,11 @@ class LangMiddleware implements MiddlewareInterface
     protected $translator;
 
     /**
+     * @var LangHelper
+     */
+    protected $langHelper;
+
+    /**
      * @var LocaleDetector
      */
     protected $localeDetector;
@@ -51,11 +57,12 @@ class LangMiddleware implements MiddlewareInterface
      */
     protected $config;
 
-    public function __construct(TranslatorInterface $translator, LocaleDetector $localeDetector, LangService $langService, array $config = null)
+    public function __construct(TranslatorInterface $translator, LocaleDetector $localeDetector, LangHelper $langHelper, LangService $langService, array $config = null)
     {
         $this->translator = $translator;
         $this->localeDetector = $localeDetector;
         $this->langService = $langService;
+        $this->langHelper = $langHelper;
         $this->config = $config;
         //$i18nTranslator = Translator::factory($config['translator']);
         //if ($container->has('Zend\I18n\Translator\TranslatorInterface')) {
@@ -75,6 +82,7 @@ class LangMiddleware implements MiddlewareInterface
         $lang = explode('_', $locale)[0];
 
         $langObject = $this->langService->getRepository()->findOneBy(['mnemo' => $lang]);
+        $this->langHelper->setCurrentLang($langObject);
 
         // Set up translator
         $this->translator->setLocale($locale)
@@ -85,7 +93,7 @@ class LangMiddleware implements MiddlewareInterface
             $request
                 ->withAttribute(self::LANG_ATTRIBUTE, $lang)
                 ->withAttribute(self::LOCALIZATION_ATTRIBUTE, $locale)
-                ->withAttribute('langObject', $langObject)
+                //->withAttribute('langObject', $langObject)
         );
     }
 }

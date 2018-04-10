@@ -1,18 +1,21 @@
 <?php
 
-namespace Stagem\ZfcLang\View\Helper;
+namespace Stagem\ZfcLang;
 
 use Popov\ZfcCurrent\CurrentHelper;
+use Stagem\ZfcLang\Model\Lang;
 use Stagem\ZfcLang\Service\LangService;
-use Zend\View\Helper\AbstractHelper;
 
-class LangHelper extends AbstractHelper
+class LangHelper
 {
     /** @var LangService */
     protected $langService;
 
     /** @var CurrentHelper */
     protected $currentHelper;
+
+    /** @var Lang */
+    protected $currentLang;
 
     public function __construct(LangService $langService, CurrentHelper $currentHelper)
     {
@@ -21,12 +24,18 @@ class LangHelper extends AbstractHelper
     }
 
     /**
-     * @return mixed
+     * @return Lang
      */
-    public function getAllLangs()
+    public function getCurrentLang()
     {
-        $langs = $this->langService->getRepository()->getActiveLangs()->getQuery()->getResult();
-
-        return $langs;
+        return $this->currentLang;
     }
-}
+
+    /**
+     * @param Lang $currentLang
+     */
+    public function setCurrentLang($currentLang)
+    {
+        $this->currentLang = $currentLang;
+    }
+    }
