@@ -26,6 +26,9 @@ $form->prepare();
 ?>
 
 
+<legend>
+    <label for="lang"><?=$this->translate('Language');?></label>
+</legend>
 <?= $this->partial('form::form', ['form' => $form]) ?>
 
 <?php /*
