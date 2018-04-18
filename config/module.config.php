@@ -4,6 +4,13 @@ namespace Stagem\ZfcLang;
 
 return [
 
+    'templates' =>  [
+        'paths' => [
+            'cms-page'    => [__DIR__ . '/../view/cms-page'],
+            'admin-lang'  => [__DIR__ . '/../view/admin/lang'],
+        ],
+    ],
+
     'view_helpers' => [
         'aliases' => [
             'lang' => View\Helper\LangHelper::class,
