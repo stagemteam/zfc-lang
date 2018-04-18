@@ -19,6 +19,8 @@ use Popov\ZfcDataGrid\Block\AbstractGrid;
 
 class LangGrid extends AbstractGrid
 {
+    protected $backButtonTitle = '';
+
     public function init()
     {
         $grid = $this->getDataGrid();
