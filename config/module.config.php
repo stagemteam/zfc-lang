@@ -4,9 +4,14 @@ namespace Stagem\ZfcLang;
 
 return [
 
+    'dependencies' => [
+        'aliases' => [
+            'translator' => \Zend\I18n\Translator\TranslatorInterface::class,
+        ],
+    ],
+
     'templates' =>  [
         'paths' => [
-            'cms-page'    => [__DIR__ . '/../view/cms-page'],
             'admin-lang'  => [__DIR__ . '/../view/admin/lang'],
         ],
     ],
