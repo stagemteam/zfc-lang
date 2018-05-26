@@ -2,8 +2,8 @@
 namespace Stagem\ZfcLang\Form\Admin;
 
 use Zend\Form\Form;
-use Stagem\ZfcTranslator\TranslatorAwareTrait;
 use Zend\I18n\Translator\TranslatorAwareInterface;
+use Stagem\ZfcLang\TranslatorAwareTrait;
 
 class LangForm extends Form implements TranslatorAwareInterface
 {

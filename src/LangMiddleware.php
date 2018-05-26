@@ -22,7 +22,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Stagem\ZfcLang\Model\Lang;
 use Stagem\ZfcLang\Service\LangService;
-use Stagem\ZfcTranslator\Http\LocaleDetector;
+use Stagem\ZfcLang\Http\LocaleDetector;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\I18n\Translator\Translator;
 
