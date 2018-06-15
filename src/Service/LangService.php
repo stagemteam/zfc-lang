@@ -8,12 +8,16 @@ use Stagem\ZfcLang\Model\Lang;
 
 /**
  * Class LangService
- *
  * @method LangRepository getRepository()
  */
 class LangService extends DomainServiceAbstract
 {
     protected $entity = Lang::class;
+
+    /**
+     * @var Lang
+     */
+    protected $current;
 
     public function save(Lang $lang)
     {
@@ -24,4 +28,19 @@ class LangService extends DomainServiceAbstract
         $om->flush();
     }
 
+    /**
+     * @return Lang
+     */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * @param Lang $current
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+    }
 }

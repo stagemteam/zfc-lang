@@ -41,8 +41,8 @@ class Lang {
     private $name;
 
     /**
-     * var boolean
-     * @ORM\Column(type="boolean", nullable=true, options={"default":"0"})
+     * var integer
+     * @ORM\Column(type="integer", nullable=true, options={"default":"0"})
      */
     private $isActive = 0;
 

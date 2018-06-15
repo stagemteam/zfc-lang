@@ -14,28 +14,14 @@ class LangHelper
     /** @var CurrentHelper */
     protected $currentHelper;
 
-    /** @var Lang */
-    protected $currentLang;
-
     public function __construct(LangService $langService, CurrentHelper $currentHelper)
     {
         $this->langService = $langService;
         $this->currentHelper = $currentHelper;
     }
 
-    /**
-     * @return Lang
-     */
-    public function getCurrentLang()
+    public function current()
     {
-        return $this->currentLang;
+        return $this->langService->getCurrent();
     }
-
-    /**
-     * @param Lang $currentLang
-     */
-    public function setCurrentLang($currentLang)
-    {
-        $this->currentLang = $currentLang;
-    }
-    }
+}
