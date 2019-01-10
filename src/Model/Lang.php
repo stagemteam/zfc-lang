@@ -23,13 +23,13 @@ class Lang {
     private $id;
 
 	/**
-	 * @ORM\Column(type="string", unique=true, nullable=false)
+	 * @ORM\Column(type="string", unique=true, length=191, nullable=false)
 	 * @var string
 	 */
 	private $mnemo;
 
     /**
-     * @ORM\Column(type="string", unique=true, nullable=false)
+     * @ORM\Column(type="string", unique=false, nullable=false)
      * @var string
      */
     private $locale;
