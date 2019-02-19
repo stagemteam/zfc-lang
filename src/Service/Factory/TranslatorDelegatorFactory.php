@@ -30,7 +30,8 @@ class TranslatorDelegatorFactory implements DelegatorFactoryInterface
             if ($sm->has(ModuleHelper::class)) {
                 /** @var ModuleHelper $modulePlugin */
                 $modulePlugin = $sm->get(ModuleHelper::class);
-                $textDomain = $modulePlugin->setRealContext($service)->getModule()->getName();
+                $module = $modulePlugin->setRealContext($service)->getModule();
+                $textDomain = $module->getName();
             } elseif ($sm->has(CurrentHelper::class)) {
                 /** @var CurrentHelper $currentPlugin */
                 $currentPlugin = $sm->get(CurrentHelper::class);
